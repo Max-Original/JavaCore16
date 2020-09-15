@@ -10,7 +10,9 @@ public class Application {
 
 	public static void main(String[] args) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, NoSuchMethodException, InstantiationException, InvocationTargetException {
 		
+		
 		Class audiCar = Car.class;
+		
 		System.out.println();
 		System.out.println("Class name of object is" + audiCar.getSimpleName());
 		
@@ -45,13 +47,31 @@ public class Application {
 		}
 		System.out.println();
 		
-		Constructor constructor = audiCar.getConstructor(String.class, boolean.class);
-		Object newAudiCar = constructor.newInstance("Audi",true);
-				
-		System.out.println(newAudiCar);
+		// Second
+		Car car2 = new Car("Zaz", true);
+		Class carClass = car2.getClass();
+		Field brandfield = carClass.getField("brand");
+		System.out.println(car2);
+		brandfield.set(car2, "ford");
+		System.out.println(car2);
 		
-		System.out.println(methods[3]);
-		System.out.println(methods[11]);
+		//Third
+		Car car = new Car("lada", false);
+		
+		try {
+			Method method = car.getClass().getMethod("myMethod", String.class);
+			method.invoke(car, "super");
+		}catch(Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		try {
+			Method method = car.getClass().getMethod("myMethod2",int.class, String.class);
+			method.invoke(car, 100 ,"super");
+		}catch(Exception e1) {
+			e1.printStackTrace();
+		}
+		
 	}
 
 }

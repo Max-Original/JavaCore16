@@ -53,10 +53,12 @@ public class Car {
 		this.coast = coast;
 	}
 	
-	public void myMethod(String args) {	
+	public void myMethod(String args) {
+		System.out.println("Hello my myMethod");
 	}
 	
 	public void myMethod2(int a, String args) {
+		System.out.println("Hello myMethod2");
 	}
 	
 	@Override
